@@ -1,1 +1,1 @@
-# cicba2026cetificate
+# cicba2026certificate

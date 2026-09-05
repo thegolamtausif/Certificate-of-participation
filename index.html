@@ -83,7 +83,6 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 12px;
         }
-
         .presenter-list {
             flex: 1;
             overflow-y: auto;
@@ -212,12 +211,19 @@
             color: var(--primary);
             text-transform: uppercase;
             line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .conf-date {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
             margin-bottom: 5px;
         }
 
         .cert-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 56px; /* Slightly reduced size */
+            font-size: 50px; /* Slightly reduced size */
             color: var(--primary);
             margin: 5px 0 15px 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -270,7 +276,7 @@
         }
 
         .conf-details {
-            font-size: 13px;
+            font-size: 15px;
             line-height: 1.5;
             color: #444;
             padding: 0 60px;
@@ -354,7 +360,7 @@
         </div>
         
         <div class="controls">
-            <button class="btn" onclick="window.print()">Print Current Certificate</button>
+            <!-- Removed the single print button as requested -->
             <button class="btn btn-success" onclick="startBulkPrint()">Print All to PDF</button>
             
             <div class="chair-selection">
@@ -427,7 +433,8 @@
 
             <!-- Content Area -->
             <div class="certificate-content">
-                <div class="ref-number" id="certRef">Paper ID: 80</div>
+                <!-- Updated Reference ID pattern here -->
+                <div class="ref-number" id="certRef">Ref : CICBA-2026/Paper ID - 80</div>
                 
                 <div class="logos">
                     <img src="clogo.png" alt="CICBA">
@@ -438,6 +445,7 @@
 
                 <div class="text-block">
                     <div class="conf-title">8th International Conference on Computational Intelligence in Communications and Business Analytics (CICBA-2026)</div>
+                    <div class="conf-date">10-12 September 2026</div>
                     <div class="cert-title">Certificate of Presentation</div>
                     
                     <div class="presented-to">Presented to</div>
@@ -452,8 +460,9 @@
                     
                     <div class="paper-title" id="certTitle">"Quantum Edge and Corner Detection: A Multidimensional Analytical Perspective"</div>
                     
+                    <!-- Updated Conference Details Footer here -->
                     <div class="conf-details">
-                        at the 8th International Conference on Computational Intelligence in Communications and Business Analytics (CICBA-2026), held during September 10-12, 2026, organized by the Department of Computer Science, University of Gour Banga, Malda, West Bengal, India.
+                        at the 8th International Conference CICBA-2026 , held during September 10-12, 2026, organized by the Department of Computer Science, University of Gour Banga, Malda, West Bengal, India.
                     </div>
                 </div>
 
@@ -570,7 +579,8 @@
             currentIndex = index;
             const p = presenters[index];
             
-            document.getElementById('certRef').innerText = `Paper ID: ${p.id}`;
+            // Updated Reference ID Pattern
+            document.getElementById('certRef').innerText = `Ref : CICBA-2026/Paper ID - ${p.id}`;
             document.getElementById('certName').innerText = p.name;
             
             // Grammar logic for "Independent"
@@ -643,8 +653,8 @@
                 clone.id = ''; // Remove ID for the clone
                 clone.className = 'certificate-wrapper bulk-cert';
                 
-                // Inject the specific presenter's data into the clone
-                clone.querySelector('.ref-number').innerText = `Paper ID: ${p.id}`;
+                // Inject the specific presenter's data into the clone with updated Ref text
+                clone.querySelector('.ref-number').innerText = `Ref : CICBA-2026/Paper ID - ${p.id}`;
                 clone.querySelector('.name').innerText = p.name;
                 clone.querySelector('.paper-title').innerText = `"${p.title}"`;
                 clone.querySelector('.affil-text').innerText = p.affil;

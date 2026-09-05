@@ -189,7 +189,7 @@
         .logos {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 55px; /* Increased default gap slightly */
             margin-top: 30px;
             height: 70px;
         }
@@ -363,6 +363,12 @@
             <!-- Removed the single print button as requested -->
             <button class="btn btn-success" onclick="startBulkPrint()">Print All to PDF</button>
             
+            <div class="chair-selection" style="margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 12px;">
+                <strong>Adjust Logo Spacing:</strong>
+                <input type="range" id="logoGapSlider" min="20" max="150" value="55" style="width: 100%; margin-top: 8px; cursor: pointer;" oninput="updateLogoGap()">
+                <div style="text-align: right; font-size: 10px; color: #666;" id="logoGapValue">55px</div>
+            </div>
+
             <div class="chair-selection">
                 <strong>Include Signatures:</strong>
                 <label><input type="checkbox" id="chair1" checked onchange="updateSignatures()"> Dr. Abu Sufian</label>
@@ -615,6 +621,14 @@
                     `;
                 }
             });
+        }
+
+        function updateLogoGap() {
+            const gapValue = document.getElementById('logoGapSlider').value;
+            // Update the live preview
+            document.querySelector('.logos').style.gap = gapValue + 'px';
+            // Update the text label
+            document.getElementById('logoGapValue').innerText = gapValue + 'px';
         }
 
         function addPresenter() {
